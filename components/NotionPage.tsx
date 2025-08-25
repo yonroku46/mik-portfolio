@@ -4,7 +4,7 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { type PageBlock } from 'notion-types'
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import { getBlockTitle, getPageProperty } from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
@@ -168,7 +168,7 @@ const propertyLastEditedTimeValue = (
 }
 
 const propertyDateValue = (
-  { data, schema, pageHeader }: any,
+  { data, schema, pageHeader: _pageHeader }: any,
   defaultFn: () => React.ReactNode
 ) => {
   // Apply Japanese date formatting for all date properties (not just pageHeader)

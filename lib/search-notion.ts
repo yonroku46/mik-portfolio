@@ -32,8 +32,8 @@ async function searchNotionImpl(
     }
 
     return response.json() as Promise<types.SearchResults>
-  } catch (error) {
-    console.warn('Search failed:', error)
+  } catch (err) {
+    console.warn('Search failed:', err)
     // Return empty results on any error
     return {
       results: [],
