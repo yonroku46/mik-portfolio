@@ -1,37 +1,37 @@
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
-import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
-import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
-import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+// import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
+// import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
+// import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
+// import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
+// import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+// import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
+// import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
+// import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
+// import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import * as React from 'react'
 
 import * as config from '@/lib/config'
-import { useDarkMode } from '@/lib/use-dark-mode'
+// import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
 export function FooterImpl() {
-  const [hasMounted, setHasMounted] = React.useState(false)
-  const { isDarkMode, toggleDarkMode } = useDarkMode()
+  // const [hasMounted, setHasMounted] = React.useState(false)
+  // const { isDarkMode, toggleDarkMode } = useDarkMode()
   const currentYear = new Date().getFullYear()
 
-  const onToggleDarkMode = React.useCallback(
-    (e: any) => {
-      e.preventDefault()
-      toggleDarkMode()
-    },
-    [toggleDarkMode]
-  )
+  // const onToggleDarkMode = React.useCallback(
+  //   (e: any) => {
+  //     e.preventDefault()
+  //     toggleDarkMode()
+  //   },
+  //   [toggleDarkMode]
+  // )
 
-  React.useEffect(() => {
-    setHasMounted(true)
-  }, [])
+  // React.useEffect(() => {
+  //   setHasMounted(true)
+  // }, [])
 
   return (
     <footer className={styles.footer}>
@@ -39,7 +39,7 @@ export function FooterImpl() {
         Copyright {currentYear} {config.author}
       </div>
 
-      <div className={styles.settings}>
+      {/* <div className={styles.settings}>
         {hasMounted && (
           <a
             className={styles.toggleDarkMode}
@@ -51,9 +51,9 @@ export function FooterImpl() {
             {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
         )}
-      </div>
+      </div> */}
 
-      <div className={styles.social}>
+      {/* <div className={styles.social}>
         {config.twitter && (
           <a
             className={styles.twitter}
@@ -136,7 +136,7 @@ export function FooterImpl() {
             <FaYoutube />
           </a>
         )}
-      </div>
+      </div> */}
     </footer>
   )
 }

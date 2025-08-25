@@ -250,9 +250,11 @@ export async function getNotionPageInfo({
   //   : undefined
   const date =
     isBlogPost && datePublished
-      ? `${datePublished.toLocaleString('en-US', {
-          month: 'long'
-        })} ${datePublished.getFullYear()}`
+      ? datePublished.toLocaleDateString('ja-JP', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })
       : undefined
   const detail = date || author || libConfig.domain
 

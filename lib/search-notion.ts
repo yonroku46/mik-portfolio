@@ -12,24 +12,35 @@ export const searchNotion = pMemoize(searchNotionImpl, {
 async function searchNotionImpl(
   params: types.SearchParams
 ): Promise<types.SearchResults> {
-  return fetch(api.searchNotion, {
-    method: 'POST',
-    body: JSON.stringify(params),
-    headers: {
-      'content-type': 'application/json'
-    }
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res
+  try {
+    const response = await fetch(api.searchNotion, {
+      method: 'POST',
+      body: JSON.stringify(params),
+      headers: {
+        'content-type': 'application/json'
       }
-
-      // convert non-2xx HTTP responses into errors
-      const error: any = new Error(res.statusText)
-      error.response = res
-      throw error
     })
-    .then((res) => res.json() as Promise<types.SearchResults>)
+
+    if (!response.ok) {
+      console.warn('Search API error:', response.status, response.statusText)
+      // Return empty results instead of throwing error
+      return {
+        results: [],
+        total: 0,
+        recordMap: {} as types.RecordMap
+      }
+    }
+
+    return response.json() as Promise<types.SearchResults>
+  } catch (error) {
+    console.warn('Search failed:', error)
+    // Return empty results on any error
+    return {
+      results: [],
+      total: 0,
+      recordMap: {} as types.RecordMap
+    }
+  }
 
   // return ky
   //   .post(api.searchNotion, {

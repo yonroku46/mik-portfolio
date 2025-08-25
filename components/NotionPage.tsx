@@ -145,10 +145,23 @@ const propertyLastEditedTimeValue = (
   { block, pageHeader }: any,
   defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && block?.last_edited_time) {
-    return `Last updated ${formatDate(block?.last_edited_time, {
-      month: 'long'
-    })}`
+  // Apply Japanese formatting for all last edited time displays
+  if (block?.last_edited_time) {
+    const date = new Date(block.last_edited_time)
+    if (pageHeader) {
+      return `最終更新 ${date.toLocaleDateString('ja-JP', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}`
+    } else {
+      // For gallery cards, show shorter format
+      return date.toLocaleDateString('ja-JP', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    }
   }
 
   return defaultFn()
@@ -158,12 +171,16 @@ const propertyDateValue = (
   { data, schema, pageHeader }: any,
   defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && schema?.name?.toLowerCase() === 'published') {
-    const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
+  // Apply Japanese date formatting for all date properties (not just pageHeader)
+  if (schema?.type === 'date' || schema?.name?.toLowerCase() === 'published' || schema?.name?.toLowerCase() === 'date') {
+    const dateValue = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
-    if (publishDate) {
-      return `${formatDate(publishDate, {
-        month: 'long'
+    if (dateValue) {
+      const date = new Date(dateValue)
+      return `${date.toLocaleDateString('ja-JP', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
       })}`
     }
   }

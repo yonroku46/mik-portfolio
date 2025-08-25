@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'Portfolio',
+  domain: 'my-portfolio.com',
+  author: 'Matoba',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Personal portfolio showcasing projects, skills, and professional journey',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
@@ -50,8 +50,9 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
+  isSearchEnabled: false,
+  // navigationStyle: 'default'
+  navigationStyle: 'custom',
   // navigationLinks: [
   //   {
   //     title: 'About',
